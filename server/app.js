@@ -24,5 +24,5 @@ app.get("*", (_req, res) => {
 });
 
 httpServer.listen(PORT, HOST, () => {
-  console.log(`Hangman Classroom listening at http://${HOST}:${PORT}`);
+  console.log(`Hàng Ngang Bí Ẩn listening at http://${HOST}:${PORT}`);
 });

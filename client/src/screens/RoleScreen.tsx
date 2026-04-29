@@ -6,7 +6,7 @@ export function RoleScreen({ onCreate, onJoin }: { onCreate: () => void; onJoin:
       <div className="hero-copy">
         <div className="eyebrow">
           <Star size={18} />
-          Hangman phòng học realtime
+          Hàng Ngang Bí Ẩn realtime
         </div>
         <h1>Đoán hàng ngang trước khi hết số lần sai</h1>
       </div>

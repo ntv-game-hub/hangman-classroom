@@ -1,6 +1,6 @@
 # Architecture
 
-Word Guessing Game is a single-page React app backed by a long-running Express + Socket.IO server. The shared rule module stays pure so both client and server can depend on the same text-processing behavior.
+Hàng Ngang Bí Ẩn is a single-page React app backed by a long-running Express + Socket.IO server. The shared rule module stays pure so both client and server can depend on the same Vietnamese text-processing behavior.
 
 ## Runtime Model
 
@@ -19,7 +19,7 @@ client/
     screens/            Role, create, join, host, and player screens
     constants.ts        Storage keys and presentation constants
     types.ts            Client-facing domain types
-    utils/              URL/session helpers and word-guessing utilities
+    utils/              URL/session helpers and text utilities
 server/
   app.js                Express + Socket.IO bootstrap
   config.js             Environment and dist path configuration
@@ -42,8 +42,8 @@ Screen composition belongs in `client/src/screens`:
 - `RoleScreen` chooses the entry mode.
 - `CreateGameScreen` submits the host setup form.
 - `JoinGameScreen` handles direct code entry and room list joining.
-- `HostDashboard` shows review controls and host-level room state.
-- `PlayerGameScreen` renders the letter board and per-player history.
+- `HostDashboard` shows the shared word board, wrong-count drawing, guesses, and host-level room state.
+- `PlayerGameScreen` renders the word board, guess forms, history, and leaderboard.
 
 Reusable UI belongs in `client/src/components`:
 
@@ -63,7 +63,7 @@ Shared browser helpers belong in `client/src/utils`.
 `server/socketHandlers.js` owns all realtime behavior:
 
 - create/join/get/finish flow
-- submit/review flow
+- letter/full-answer guess flow
 - room list updates
 - join-room membership
 
@@ -78,9 +78,9 @@ Shared browser helpers belong in `client/src/utils`.
 - Vietnamese grapheme segmentation
 - sanitizing answer and player input
 - static character handling
-- auto review
-- applying review results
-- win detection
+- guessed-letter reveal
+- full-answer comparison
+- win/loss detection
 
 Any rule change should start here and be covered by `tests/gameLogic.test.js`.
 
@@ -88,8 +88,8 @@ Any rule change should start here and be covered by `tests/gameLogic.test.js`.
 
 - Screens and components use PascalCase file names.
 - Utility files use descriptive camelCase names.
-- Socket.IO events use `domain:action`, such as `game:create` and `guess:review`.
-- Storage keys use the `word-guessing-` prefix.
+- Socket.IO events use `domain:action`, such as `game:create`, `guess:letter`, and `guess:word`.
+- Storage keys use the `hangman-classroom-` prefix.
 
 ## Extension Guide
 

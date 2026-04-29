@@ -109,9 +109,9 @@ type SocketResponse = {
 };
 
 const socketUrl = import.meta.env.VITE_SOCKET_URL || window.location.origin;
-const HOST_SESSION = "word-guessing-host";
-const PLAYER_SESSION = "word-guessing-player";
-const PLAYER_NAME = "word-guessing-player-name";
+const HOST_SESSION = "hangman-classroom-host";
+const PLAYER_SESSION = "hangman-classroom-player";
+const PLAYER_NAME = "hangman-classroom-player-name";
 
 const statusCopy: Record<PlayerStatus, string> = {
   playing: "Đang chơi",
@@ -378,7 +378,7 @@ function App() {
           <span className="brand-mark">
             <Sparkles size={24} />
           </span>
-          <span>Ô Chữ Vui Vẻ</span>
+          <span>Hàng Ngang Bí Ẩn</span>
           <span className={`connection ${connected ? "online" : "offline"}`}>
             <span />
             {connected ? "Online" : "Đang nối"}

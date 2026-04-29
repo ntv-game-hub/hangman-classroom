@@ -492,5 +492,5 @@ app.get("*", (_req, res) => {
 });
 
 httpServer.listen(PORT, HOST, () => {
-  console.log(`Word Guessing Game listening at http://${HOST}:${PORT}`);
+  console.log(`Hàng Ngang Bí Ẩn listening at http://${HOST}:${PORT}`);
 });

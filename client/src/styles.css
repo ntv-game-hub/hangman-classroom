@@ -247,11 +247,35 @@ p {
   color: var(--muted);
 }
 
-.mode-choice label {
-  display: flex;
+.setup-form .mode-choice .mode-option {
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  border: 2px solid rgba(194, 100, 255, 0.14);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.62);
+  padding: 10px 12px;
   font-weight: 850;
+}
+
+.setup-form .mode-choice .mode-option input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--violet-1);
+}
+
+.setup-form .mode-choice .mode-option:has(input:checked) {
+  border-color: rgba(194, 100, 255, 0.55);
+  background: rgba(244, 227, 255, 0.7);
+}
+
+.setup-form .mode-choice .mode-option span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .play-grid {

@@ -85,10 +85,22 @@ export function HostDashboard({
       </div>
 
       <div className="info-strip">
-        <div className="info-pill"><LinkIcon size={20} /><span>Mã phòng</span><strong>{game.code}</strong></div>
-        <div className="info-pill"><RefreshCw size={20} /><span>Chế độ</span><strong>{modeCopy[game.mode]}</strong></div>
-        <div className="info-pill"><Users size={20} /><span>Người chơi</span><strong>{players.length}</strong></div>
-        <div className="info-pill"><Trophy size={20} /><span>Đáp án</span><strong>{game.answer}</strong></div>
+        <div className="info-pill">
+          <span><LinkIcon size={20} /></span>
+          <div><small>Mã phòng</small><strong>{game.code}</strong></div>
+        </div>
+        <div className="info-pill">
+          <span><RefreshCw size={20} /></span>
+          <div><small>Chế độ</small><strong>{modeCopy[game.mode]}</strong></div>
+        </div>
+        <div className="info-pill">
+          <span><Users size={20} /></span>
+          <div><small>Người chơi</small><strong>{players.length}</strong></div>
+        </div>
+        <div className="info-pill">
+          <span><Trophy size={20} /></span>
+          <div><small>Đáp án</small><strong>{game.answer}</strong></div>
+        </div>
       </div>
 
       <div className="play-grid">

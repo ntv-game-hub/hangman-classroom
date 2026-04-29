@@ -78,13 +78,13 @@ function CreateGameForm({
       </label>
       <fieldset className="mode-choice">
         <legend>Chế độ chơi</legend>
-        <label>
+        <label className="mode-option">
           <input type="radio" name="mode" checked={mode === "free"} onChange={() => setMode("free")} />
-          Cả lớp cùng đoán tự do
+          <span>Cả lớp cùng đoán tự do</span>
         </label>
-        <label>
+        <label className="mode-option">
           <input type="radio" name="mode" checked={mode === "turns"} onChange={() => setMode("turns")} />
-          Từng người một lượt
+          <span>Từng người một lượt</span>
         </label>
       </fieldset>
       <button className="primary-action" type="submit" disabled={busy}>

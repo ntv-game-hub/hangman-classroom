@@ -111,8 +111,14 @@ export function PlayerGameScreen({
       <div className="play-grid">
         <div className="play-panel">
           <div className="play-stats">
-            <div className="info-pill"><Clock3 size={18} /><span>Chế độ</span><strong>{modeCopy[game.mode]}</strong></div>
-            <div className="info-pill"><Trophy size={18} /><span>Điểm của bạn</span><strong>{player.score}</strong></div>
+            <div className="info-pill">
+              <span><Clock3 size={18} /></span>
+              <div><small>Chế độ</small><strong>{modeCopy[game.mode]}</strong></div>
+            </div>
+            <div className="info-pill">
+              <span><Trophy size={18} /></span>
+              <div><small>Điểm của bạn</small><strong>{player.score}</strong></div>
+            </div>
           </div>
           <WordBoard game={game} />
           {!isMyTurn && <p className="waiting-note">Đang chờ lượt của bạn.</p>}
