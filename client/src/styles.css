@@ -1928,13 +1928,13 @@ p {
   .player-dashboard .wrong-illustration {
     grid-row: auto;
     position: static;
-    min-height: 172px;
-    padding: 10px;
+    min-height: 220px;
+    padding: 12px;
   }
 
   .player-dashboard .wrong-art {
-    width: min(190px, 100%);
-    max-height: 150px;
+    width: min(240px, 100%);
+    max-height: 186px;
   }
 
   .player-dashboard .hangman-word {
@@ -1956,9 +1956,7 @@ p {
   }
 
   .player-dashboard .guess-history {
-    max-height: 76px;
-    overflow: auto;
-    padding: 0;
+    display: none;
   }
 
   .player-dashboard .leaderboard {
@@ -2003,8 +2001,14 @@ p {
   }
 
   .settings-menu {
-    align-self: flex-start;
-    margin-left: 0;
+    align-self: flex-end;
+    margin-left: auto;
+  }
+
+  .settings-panel {
+    right: 0;
+    left: auto;
+    width: min(248px, calc(100vw - 24px));
   }
 
   .review-cell {
@@ -2104,6 +2108,10 @@ p {
     gap: 6px;
   }
 
+  .player-dashboard .dashboard-banner h1 {
+    display: none;
+  }
+
   .player-dashboard .dashboard-banner p {
     display: -webkit-box;
     overflow: hidden;
@@ -2123,12 +2131,13 @@ p {
   }
 
   .player-dashboard .wrong-illustration {
-    min-height: 150px;
+    min-height: 210px;
+    gap: 6px;
   }
 
   .player-dashboard .wrong-art {
-    width: min(165px, 100%);
-    max-height: 124px;
+    width: min(235px, 100%);
+    max-height: 176px;
   }
 
   .player-dashboard .wrong-illustration strong {
