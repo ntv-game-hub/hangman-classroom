@@ -1,6 +1,6 @@
 # Architecture
 
-Hàng Ngang Bí Ẩn is a single-page React app backed by a long-running Express + Socket.IO server. The shared rule module stays pure so both client and server can depend on the same Vietnamese text-processing behavior.
+Đoán Chữ Bí Ẩn is a single-page React app backed by a long-running Express + Socket.IO server. The shared rule module stays pure so both client and server can depend on the same Vietnamese text-processing behavior.
 
 ## Runtime Model
 

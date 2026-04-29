@@ -4,6 +4,7 @@ import {
   isCorrectLetter,
   isFullAnswerCorrect,
   isSolved,
+  normalizeIllustrationTheme,
   normalizeGuessLetter,
   normalizeMode,
   normalizeText,
@@ -72,6 +73,7 @@ export function registerSocketHandlers(io) {
       const hint = normalizeText(payload.hint).trim();
       const maxWrong = Number(payload.maxWrong || 7);
       const mode = normalizeMode(payload.mode);
+      const illustrationTheme = normalizeIllustrationTheme(payload.illustrationTheme);
 
       if (!answer) {
         sendError(socket, callback, "Vui lòng nhập từ cần đoán.", "ANSWER_REQUIRED");
@@ -95,6 +97,7 @@ export function registerSocketHandlers(io) {
         answerCells,
         hint,
         mode,
+        illustrationTheme,
         maxWrong: Math.floor(maxWrong),
         cooldownMs: 2200,
         hostToken: crypto.randomBytes(24).toString("hex"),

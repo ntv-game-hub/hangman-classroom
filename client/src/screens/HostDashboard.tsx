@@ -1,29 +1,8 @@
-import { ClipboardCopy, Crown, Home, Link as LinkIcon, RefreshCw, Trophy, Users } from "lucide-react";
+import { ClipboardCopy, Crown, Link as LinkIcon, RefreshCw, Settings, Trophy, Users } from "lucide-react";
 import { type Socket } from "socket.io-client";
+import { WrongGuessIllustration } from "../components/WrongGuessIllustration";
 import { modeCopy } from "../constants";
 import type { GameState, SocketResponse } from "../types";
-
-function HangmanDrawing({ wrongCount, maxWrong }: { wrongCount: number; maxWrong: number }) {
-  const parts = ["post", "beam", "rope", "head", "body", "left-arm", "right-arm", "left-leg", "right-leg", "ground", "shadow", "bell"];
-  const visible = Math.ceil((wrongCount / Math.max(1, maxWrong)) * parts.length);
-  return (
-    <div className="hangman-card" aria-label={`Sai ${wrongCount} trên ${maxWrong}`}>
-      <svg viewBox="0 0 220 220" role="img">
-        <line className={visible > 9 ? "show" : ""} x1="35" y1="198" x2="185" y2="198" />
-        <line className={visible > 0 ? "show" : ""} x1="62" y1="198" x2="62" y2="28" />
-        <line className={visible > 1 ? "show" : ""} x1="62" y1="28" x2="152" y2="28" />
-        <line className={visible > 2 ? "show" : ""} x1="152" y1="28" x2="152" y2="58" />
-        <circle className={visible > 3 ? "show" : ""} cx="152" cy="77" r="19" />
-        <line className={visible > 4 ? "show" : ""} x1="152" y1="96" x2="152" y2="142" />
-        <line className={visible > 5 ? "show" : ""} x1="152" y1="112" x2="124" y2="130" />
-        <line className={visible > 6 ? "show" : ""} x1="152" y1="112" x2="180" y2="130" />
-        <line className={visible > 7 ? "show" : ""} x1="152" y1="142" x2="128" y2="172" />
-        <line className={visible > 8 ? "show" : ""} x1="152" y1="142" x2="176" y2="172" />
-      </svg>
-      <strong>{wrongCount}/{maxWrong} nét sai</strong>
-    </div>
-  );
-}
 
 function WordBoard({ game }: { game: GameState }) {
   return (
@@ -44,7 +23,7 @@ export function HostDashboard({
   hostToken,
   socket,
   onError,
-  onHome,
+  onHome: _onHome,
   onCreateNewRoom
 }: {
   game: GameState;
@@ -76,12 +55,16 @@ export function HostDashboard({
           <h1>Phòng {game.code}</h1>
           <p>{game.hint || "Chưa có gợi ý."}</p>
         </div>
-        <div className="host-actions">
-          <button className="primary-action compact" type="button" onClick={onCreateNewRoom}><Crown size={20} /> Tạo phòng mới</button>
-          <button className="soft-button" type="button" onClick={copyLink}><ClipboardCopy size={20} /> Copy link</button>
-          <button className="soft-button" type="button" onClick={finish}><Trophy size={20} /> Kết thúc</button>
-          <button className="soft-button" type="button" onClick={onHome}><Home size={20} /> Trang chính</button>
-        </div>
+        <details className="settings-menu">
+          <summary className="icon-button" aria-label="Cài đặt phòng">
+            <Settings size={22} />
+          </summary>
+          <div className="settings-panel">
+            <button className="settings-action" type="button" onClick={onCreateNewRoom}><Crown size={19} /> Tạo phòng mới</button>
+            <button className="settings-action" type="button" onClick={copyLink}><ClipboardCopy size={19} /> Copy link</button>
+            <button className="settings-action danger" type="button" onClick={finish}><Trophy size={19} /> Kết thúc</button>
+          </div>
+        </details>
       </div>
 
       <div className="info-strip">
@@ -116,7 +99,7 @@ export function HostDashboard({
             ))}
           </div>
         </div>
-        <HangmanDrawing wrongCount={game.wrongCount} maxWrong={game.maxWrong} />
+        <WrongGuessIllustration theme={game.illustrationTheme} wrongCount={game.wrongCount} maxWrong={game.maxWrong} />
       </div>
 
       <div className="player-list compact-list">

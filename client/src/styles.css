@@ -278,6 +278,105 @@ p {
   overflow-wrap: anywhere;
 }
 
+.theme-choice {
+  border: 1px solid rgba(194, 100, 255, 0.24);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  background: rgba(255, 250, 255, 0.66);
+}
+
+.theme-choice legend {
+  padding: 0 8px;
+  font-weight: 900;
+  color: var(--muted);
+}
+
+.theme-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.setup-form .theme-option {
+  min-height: 96px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 10px;
+  align-items: center;
+  border: 2px solid rgba(194, 100, 255, 0.14);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.62);
+  padding: 10px;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.setup-form .theme-option:hover,
+.setup-form .theme-option.selected {
+  border-color: rgba(194, 100, 255, 0.55);
+  background: rgba(244, 227, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+.setup-form .theme-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme-swatch {
+  grid-row: span 2;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--violet-1), var(--sky));
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.7);
+}
+
+.theme-swatch.balloons {
+  background: radial-gradient(circle at 30% 30%, #fff 0 8%, transparent 9%), linear-gradient(135deg, #ff6f7d, #61c9ff);
+}
+
+.theme-swatch.sandcastle {
+  background: linear-gradient(180deg, #f2c56b 0 55%, #38bdf8 56%);
+}
+
+.theme-swatch.rocket {
+  background: linear-gradient(135deg, #1e293b, #61c9ff 52%, #ffd76d);
+}
+
+.theme-swatch.flower {
+  background: radial-gradient(circle, #ffd76d 0 20%, #ff9aa8 21% 48%, #2eb872 49%);
+}
+
+.theme-swatch.candles {
+  background: repeating-linear-gradient(90deg, #c264ff 0 8px, #ffd76d 8px 16px, #61c9ff 16px 24px);
+}
+
+.theme-swatch.treasure {
+  background: linear-gradient(135deg, #9a5c2e, #ffd76d);
+}
+
+.theme-swatch.robot {
+  background: linear-gradient(135deg, #64748b, #e2e8f0 48%, #2eb872);
+}
+
+.theme-swatch.rainbow {
+  background: linear-gradient(135deg, #ef4444, #f97316, #facc15, #22c55e, #38bdf8, #6366f1, #a855f7);
+}
+
+.theme-option strong,
+.theme-option small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.theme-option small {
+  color: var(--muted);
+  font-weight: 850;
+}
+
 .play-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
@@ -314,7 +413,8 @@ p {
   box-shadow: none;
 }
 
-.hangman-card {
+.hangman-card,
+.wrong-illustration {
   display: grid;
   gap: 10px;
   place-items: center;
@@ -326,9 +426,25 @@ p {
   min-height: 300px;
 }
 
-.hangman-card svg {
+.hangman-card svg,
+.wrong-art {
   width: min(260px, 100%);
   height: auto;
+}
+
+.wrong-illustration > div {
+  display: grid;
+  gap: 2px;
+  text-align: center;
+}
+
+.wrong-illustration strong {
+  font-size: 1.04rem;
+}
+
+.wrong-illustration span {
+  color: var(--muted);
+  font-weight: 900;
 }
 
 .hangman-card line,
@@ -470,7 +586,7 @@ p {
 .form-stage {
   display: grid;
   gap: 18px;
-  max-width: 760px;
+  max-width: 1180px;
 }
 
 .wizard-header {
@@ -754,6 +870,66 @@ p {
 .icon-button {
   width: 48px;
   padding: 0;
+}
+
+.settings-menu {
+  position: relative;
+  margin-left: auto;
+}
+
+.settings-menu summary {
+  list-style: none;
+}
+
+.settings-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.settings-menu[open] summary {
+  background: white;
+  box-shadow: 0 14px 28px rgba(102, 45, 145, 0.14);
+}
+
+.settings-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 15;
+  width: min(240px, calc(100vw - 32px));
+  display: grid;
+  gap: 6px;
+  padding: 8px;
+  border-radius: var(--radius);
+  background: rgba(255, 250, 255, 0.98);
+  border: 1px solid rgba(194, 100, 255, 0.18);
+  box-shadow: var(--shadow);
+}
+
+.settings-action {
+  width: 100%;
+  min-height: 42px;
+  border: 0;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0 12px;
+  color: var(--ink);
+  background: transparent;
+  font-weight: 900;
+}
+
+.settings-action:hover {
+  background: rgba(244, 227, 255, 0.7);
+}
+
+.settings-action.danger {
+  color: #b93446;
+}
+
+.settings-action.danger:hover {
+  background: var(--coral-soft);
 }
 
 .dashboard {
@@ -1054,6 +1230,28 @@ p {
   display: grid;
   gap: 22px;
   align-content: start;
+}
+
+.player-dashboard .play-panel {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
+  align-items: start;
+}
+
+.player-dashboard .play-stats,
+.player-dashboard .hangman-word,
+.player-dashboard .guess-form,
+.player-dashboard .guess-history,
+.player-dashboard .result-note,
+.player-dashboard .waiting-note {
+  grid-column: 1;
+}
+
+.player-dashboard .wrong-illustration {
+  grid-column: 2;
+  grid-row: 1 / span 5;
+  min-height: 100%;
+  position: sticky;
+  top: 12px;
 }
 
 .play-stats {
@@ -1695,6 +1893,78 @@ p {
     font-size: 0.9rem;
   }
 
+  .player-dashboard .dashboard-banner {
+    padding: 10px 12px;
+  }
+
+  .player-dashboard .dashboard-banner h1 {
+    font-size: 1.45rem;
+  }
+
+  .player-dashboard .host-actions,
+  .player-dashboard .play-stats {
+    display: none;
+  }
+
+  .player-dashboard .play-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .player-dashboard .play-panel {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .player-dashboard .play-stats,
+  .player-dashboard .hangman-word,
+  .player-dashboard .guess-form,
+  .player-dashboard .guess-history,
+  .player-dashboard .result-note,
+  .player-dashboard .waiting-note,
+  .player-dashboard .wrong-illustration {
+    grid-column: 1;
+  }
+
+  .player-dashboard .wrong-illustration {
+    grid-row: auto;
+    position: static;
+    min-height: 172px;
+    padding: 10px;
+  }
+
+  .player-dashboard .wrong-art {
+    width: min(190px, 100%);
+    max-height: 150px;
+  }
+
+  .player-dashboard .hangman-word {
+    min-height: 92px;
+    padding: 12px 8px 4px;
+  }
+
+  .player-dashboard .guess-form {
+    padding: 0;
+    gap: 8px;
+  }
+
+  .player-dashboard .guess-form:first-of-type {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .player-dashboard .guess-form input {
+    min-height: 46px;
+  }
+
+  .player-dashboard .guess-history {
+    max-height: 76px;
+    overflow: auto;
+    padding: 0;
+  }
+
+  .player-dashboard .leaderboard {
+    display: none;
+  }
+
   .setup-form,
   .room-picker,
   .play-panel,
@@ -1716,6 +1986,10 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .theme-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
   .host-actions,
   .review-actions,
   .player-actions {
@@ -1726,6 +2000,11 @@ p {
   .player-actions .primary-action,
   .review-actions .primary-action {
     flex: 1 1 180px;
+  }
+
+  .settings-menu {
+    align-self: flex-start;
+    margin-left: 0;
   }
 
   .review-cell {
@@ -1819,6 +2098,59 @@ p {
     min-height: 40px;
     padding-inline: 12px;
     font-size: 0.9rem;
+  }
+
+  .player-dashboard .dashboard-banner {
+    gap: 6px;
+  }
+
+  .player-dashboard .dashboard-banner p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .player-dashboard .word-slot,
+  .player-dashboard .word-separator {
+    width: 32px;
+    height: 42px;
+    font-size: 1.25rem;
+  }
+
+  .player-dashboard .word-separator {
+    width: 16px;
+  }
+
+  .player-dashboard .wrong-illustration {
+    min-height: 150px;
+  }
+
+  .player-dashboard .wrong-art {
+    width: min(165px, 100%);
+    max-height: 124px;
+  }
+
+  .player-dashboard .wrong-illustration strong {
+    font-size: 0.92rem;
+  }
+
+  .player-dashboard .wrong-illustration span {
+    font-size: 0.82rem;
+  }
+
+  .player-dashboard .guess-form:first-of-type {
+    grid-template-columns: minmax(0, 1fr) 118px;
+  }
+
+  .player-dashboard .guess-form input {
+    min-height: 44px;
+    padding-inline: 10px;
+  }
+
+  .player-dashboard .guess-history span {
+    padding: 6px 9px;
+    font-size: 0.82rem;
   }
 
   .info-pill {

@@ -378,7 +378,7 @@ function App() {
           <span className="brand-mark">
             <Sparkles size={24} />
           </span>
-          <span>Hàng Ngang Bí Ẩn</span>
+          <span>Đoán Chữ Bí Ẩn</span>
           <span className={`connection ${connected ? "online" : "offline"}`}>
             <span />
             {connected ? "Online" : "Đang nối"}

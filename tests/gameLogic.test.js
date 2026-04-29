@@ -4,6 +4,7 @@ import {
   isCorrectLetter,
   isFullAnswerCorrect,
   isSolved,
+  normalizeIllustrationTheme,
   normalizeGuessLetter,
   revealCells,
   segmentGraphemes
@@ -35,5 +36,10 @@ describe("hangman game logic", () => {
   it("accepts full-answer guesses case-insensitively but not accent-insensitively", () => {
     expect(isFullAnswerCorrect("CẦU VỒNG", "cầu vồng")).toBe(true);
     expect(isFullAnswerCorrect("CẦU VỒNG", "cau vong")).toBe(false);
+  });
+
+  it("normalizes illustration theme choices", () => {
+    expect(normalizeIllustrationTheme("robot")).toBe("robot");
+    expect(normalizeIllustrationTheme("old-hangman")).toBe("balloons");
   });
 });

@@ -6,9 +6,9 @@ export function RoleScreen({ onCreate, onJoin }: { onCreate: () => void; onJoin:
       <div className="hero-copy">
         <div className="eyebrow">
           <Star size={18} />
-          Hàng Ngang Bí Ẩn realtime
+          Đoán Chữ Bí Ẩn realtime
         </div>
-        <h1>Đoán hàng ngang trước khi hết số lần sai</h1>
+        <h1>Đoán từ bí ẩn trước khi hết số lần sai</h1>
       </div>
       <div className="role-grid">
         <button className="role-card host-card" type="button" onClick={onCreate}>

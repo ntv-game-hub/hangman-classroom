@@ -78,3 +78,18 @@ export function sanitizeName(value) {
 export function normalizeMode(value) {
   return value === "turns" ? "turns" : "free";
 }
+
+export const ILLUSTRATION_THEMES = [
+  "balloons",
+  "sandcastle",
+  "rocket",
+  "flower",
+  "candles",
+  "treasure",
+  "robot",
+  "rainbow"
+];
+
+export function normalizeIllustrationTheme(value) {
+  return ILLUSTRATION_THEMES.includes(value) ? value : "balloons";
+}

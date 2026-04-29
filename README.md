@@ -1,6 +1,6 @@
-# Hàng Ngang Bí Ẩn
+# Đoán Chữ Bí Ẩn
 
-Hàng Ngang Bí Ẩn là game hangman phòng học realtime. Host tạo phòng, đặt từ/cụm bí ẩn hoặc chọn ngẫu nhiên từ kho 1000 mục có gợi ý; người chơi vào bằng mã phòng/link, đoán từng chữ cái tiếng Việt hoặc đoán cả đáp án.
+Đoán Chữ Bí Ẩn là game đoán chữ phòng học realtime. Host tạo phòng, đặt từ/cụm bí ẩn hoặc chọn ngẫu nhiên từ kho 1000 mục có gợi ý; người chơi vào bằng mã phòng/link, đoán từng chữ cái tiếng Việt hoặc đoán cả đáp án.
 
 ## Features
 

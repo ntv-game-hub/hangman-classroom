@@ -1,8 +1,9 @@
 import { Dice5, Play, Crown } from "lucide-react";
 import { type FormEvent, useState } from "react";
 import { WizardHeader } from "../components/WizardHeader";
+import { illustrationThemeOptions } from "../constants";
 import { wordBank } from "../data/wordBank";
-import type { GameMode } from "../types";
+import type { GameMode, IllustrationTheme } from "../types";
 import type { GameState, SocketResponse } from "../types";
 
 export function CreateGameScreen({
@@ -37,12 +38,13 @@ function CreateGameForm({
   const [hint, setHint] = useState("");
   const [maxWrong, setMaxWrong] = useState(7);
   const [mode, setMode] = useState<GameMode>("free");
+  const [illustrationTheme, setIllustrationTheme] = useState<IllustrationTheme>("balloons");
   const [busy, setBusy] = useState(false);
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
     setBusy(true);
-    socket.emit("game:create", { answer, hint, maxWrong, mode }, (res: SocketResponse) => {
+    socket.emit("game:create", { answer, hint, maxWrong, mode, illustrationTheme }, (res: SocketResponse) => {
       setBusy(false);
       if (!res.ok || !res.state || !res.hostToken) {
         onError(res.message || "Không thể tạo phòng.");
@@ -86,6 +88,25 @@ function CreateGameForm({
           <input type="radio" name="mode" checked={mode === "turns"} onChange={() => setMode("turns")} />
           <span>Từng người một lượt</span>
         </label>
+      </fieldset>
+      <fieldset className="theme-choice">
+        <legend>Minh họa khi đoán sai</legend>
+        <div className="theme-choice-grid">
+          {illustrationThemeOptions.map((option) => (
+            <label className={`theme-option ${illustrationTheme === option.id ? "selected" : ""}`} key={option.id}>
+              <input
+                type="radio"
+                name="illustrationTheme"
+                value={option.id}
+                checked={illustrationTheme === option.id}
+                onChange={() => setIllustrationTheme(option.id)}
+              />
+              <span className={`theme-swatch ${option.id}`} aria-hidden="true" />
+              <strong>{option.title}</strong>
+              <small>{option.description}</small>
+            </label>
+          ))}
+        </div>
       </fieldset>
       <button className="primary-action" type="submit" disabled={busy}>
         <Play size={22} />

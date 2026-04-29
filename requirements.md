@@ -1,4 +1,4 @@
-# Requirements - Hàng Ngang Bí Ẩn
+# Requirements - Đoán Chữ Bí Ẩn
 
 ## MVP
 

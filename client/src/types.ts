@@ -1,4 +1,5 @@
 export type GameMode = "free" | "turns";
+export type IllustrationTheme = "balloons" | "sandcastle" | "rocket" | "flower" | "candles" | "treasure" | "robot" | "rainbow";
 export type GameStatus = "active" | "won" | "lost" | "finished";
 export type PlayerStatus = "active" | "left";
 export type Screen = "role" | "create" | "join" | "host" | "player";
@@ -62,6 +63,7 @@ export type GameSummary = {
   code: string;
   hint: string;
   mode: GameMode;
+  illustrationTheme: IllustrationTheme;
   wrongLeft: number;
   maxWrong: number;
   playableCount: number;
@@ -78,6 +80,7 @@ export type GameState = {
   revealedLetters: Array<string | null>;
   hint: string;
   mode: GameMode;
+  illustrationTheme: IllustrationTheme;
   maxWrong: number;
   wrongCount: number;
   wrongLeft: number;
